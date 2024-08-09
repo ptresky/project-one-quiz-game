@@ -8,43 +8,61 @@ const quizData = [
     },
     {
         question: "Where would you be if you were standing on the Spanish Steps?",
-        options: ["Madrid", "Rome", "Mexico City", "Paris"       ],
+        options: ["Madrid", "Rome", "Mexico City", "Paris"],
         answer: "Rome",
     },
     {
         question: "How many elements are on the periodic table?",
-        options: ["118", "100", "127", "99"       ],
+        options: ["118", "100", "127", "99"],
         answer: "118",
     },
     {
         question: "What planet has the most moons?",
-        options: ["Jupiter", "Saturn", "Neptune", "Mars"       ],
+        options: ["Jupiter", "Saturn", "Neptune", "Mars"],
         answer: "Saturn",
     },
     {
         question: "What country drinks the most coffee per capita?",
-        options: ["USA", "Canada", "Guatemala", "Finland"       ],
+        options: ["USA", "Canada", "Guatemala", "Finland"],
         answer: "Finland",
     },
-    {
-        question: "Where would you be if you were standing on the Spanish Steps?",
-        options: ["Madrid", "Rome", "Mexico City", "Paris"       ],
-        answer: "Rome",
-    },
+    // {
+    //     question: "Where would you be if you were standing on the Spanish Steps?",
+    //     options: ["Madrid", "Rome", "Mexico City", "Paris"],
+    //     answer: "Rome",
+    // },
 
-    // add more questions and new arrary for hard difficulty
+    // add more questions and new array for hard difficulty
     
 ]
 // console.log(quizData[0])
 
 const questionEl = document.querySelector('#question')
 const optionsEl = document.querySelector('#options')
-const submitButton = document.querySelector('#submit')
+// const submitButton = document.querySelector('#submit')
+let gameMessageEl = document.querySelector('#gameMessage')
+const resetButtonEl = document.querySelector('#reset')
 
 
 //starting point for the player
-let currentQuestion = 0;
-let score = 0;
+init()
+
+function init() {
+    console.log("init working")
+    resetButtonEl.classList.add("hidden")
+    gameMessageEl = ""
+    currentQuestion = 0
+    score = 0
+    gameOver = false
+    render()
+}
+
+function render() {
+    if (gameOver) {
+        resetButtonEl.classList.remove('hidden')
+        gameMessageEl.classList.remove('hidden')
+    }
+}
 
 //Function once game begins to display question
 function giveQuestion() {
@@ -65,23 +83,45 @@ giveQuestion()
 //code to select answer
 function selectAnswer(event) {
     const selection = event.target;
-    const answer = quizData[currentQuestion].answer;
-    console.log(selection.innerText.toLowerCase(), "this is the on click")
-    
+    console.table(quizData)
+    const answer = quizData[0].answer;
+    // console.log(selection.innerText.toLowerCase(), "this is the on click" )
+    console.log(answer, "this is the answer")
     // compare the selection to the answer while both are lower case
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
-        console.log('we made it!')
-        score++ && currentQuestion++
-    } else{
-        gameOver()
-    }
+        console.log('right answer!')
+        score += 1  
+        gameMessageEl = "CORRECT!"
+        // remove the current question from the front of the data array
+        quizData.shift()
+        giveQuestion()
+        // console.log(currentQuestion, score)
+    } else if (
+        selection.innerText.toLowerCase() !== answer.toLowerCase()) {
+            console.log("wrong answer")
+            console.log(gameMessageEl)
+            gameMessageEl = "Wrong Answer, Play Again"
+            checkGameOver()
+        }
+        console.log(gameMessageEl)
+    
+
+        // gameOver()
+    
 }
 
 
-function gameOver() {
+
+
+function checkGameOver() {
+    gameOver = true
+    questionEl.classList.remove('hidden')
+    optionsEl.classList.remove('hidden')
+    resetButtonEl.classList.add('hidden')
 
 }
+// console.log(checkGameOver(), "game is over")
 
-function showResult() {
+// function showResult() {
 
-}
+// }
