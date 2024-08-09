@@ -23,8 +23,11 @@ h1 {
     font-size:xx-large;
     color: #219ebc
     
+}
 
-
+#gameMessage {
+    font-size: larger;
+    margin: 0 0 20px 0;
 }
 
 #question {
@@ -60,9 +63,9 @@ button:hover {
     color: #001F3F;
     background-color: #fff;
 }
-.galindo-regular {
+/* .galindo-regular {
     font-family: "Galindo", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+  } */
   

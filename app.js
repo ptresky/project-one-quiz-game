@@ -60,13 +60,17 @@ function init() {
 function render() {
     if (gameOver) {
         resetButtonEl.classList.remove('hidden')
-        gameMessageEl.classList.remove('hidden')
+        // gameMessageEl.classList.remove('hidden')
     }
 }
 
 //Function once game begins to display question
 function giveQuestion() {
     const question = quizData[0];
+    if (quizData.length === 0) {
+        return gameMessageEl = "Congratulations! You won!"
+        init()}
+        
     questionEl.innerText = question.question
 
     optionsEl.innerText = "";
@@ -88,6 +92,10 @@ function selectAnswer(event) {
     // console.log(selection.innerText.toLowerCase(), "this is the on click" )
     console.log(answer, "this is the answer")
     // compare the selection to the answer while both are lower case
+    if (quizData.length === 0) {
+        return gameMessageEl = "Congratulations! You won!"
+        init()
+    }
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
         console.log('right answer!')
         score += 1  
@@ -104,11 +112,8 @@ function selectAnswer(event) {
             checkGameOver()
         }
         console.log(gameMessageEl)
-    
 
-        // gameOver()
-    
-}
+    }
 
 
 
@@ -120,8 +125,3 @@ function checkGameOver() {
     resetButtonEl.classList.add('hidden')
 
 }
-// console.log(checkGameOver(), "game is over")
-
-// function showResult() {
-
-// }
