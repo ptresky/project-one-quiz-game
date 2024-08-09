@@ -40,7 +40,7 @@ const quizData = [
 const questionEl = document.querySelector('#question')
 const optionsEl = document.querySelector('#options')
 // const submitButton = document.querySelector('#submit')
-let gameMessageEl = document.querySelector('#gameMessage')
+const gameMessageEl = document.querySelector('#gameMessage')
 const resetButtonEl = document.querySelector('#reset')
 
 
@@ -50,7 +50,6 @@ init()
 function init() {
     console.log("init working")
     resetButtonEl.classList.add("hidden")
-    gameMessageEl = ""
     currentQuestion = 0
     score = 0
     gameOver = false
@@ -87,28 +86,29 @@ giveQuestion()
 //code to select answer
 function selectAnswer(event) {
     const selection = event.target;
-    console.table(quizData)
+    // console.table(quizData)
     const answer = quizData[0].answer;
     // console.log(selection.innerText.toLowerCase(), "this is the on click" )
     console.log(answer, "this is the answer")
     // compare the selection to the answer while both are lower case
     if (quizData.length === 0) {
-        return gameMessageEl = "Congratulations! You won!"
+        return gameMessageEl.textContent = "Congratulations! You won!"
         init()
     }
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
         console.log('right answer!')
         score += 1  
-        gameMessageEl = "CORRECT!"
+        gameMessageEl.textContent = "CORRECT!"
         // remove the current question from the front of the data array
         quizData.shift()
         giveQuestion()
+        console.log(gameMessageEl.textContent)
         // console.log(currentQuestion, score)
     } else if (
         selection.innerText.toLowerCase() !== answer.toLowerCase()) {
             console.log("wrong answer")
             console.log(gameMessageEl)
-            gameMessageEl = "Wrong Answer, Play Again"
+            gameMessageEl.textContent = "Wrong Answer, Play Again"
             checkGameOver()
         }
         console.log(gameMessageEl)

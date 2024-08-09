@@ -28,6 +28,7 @@ h1 {
 #gameMessage {
     font-size: larger;
     margin: 0 0 20px 0;
+    color: #fb8500;
 }
 
 #question {
