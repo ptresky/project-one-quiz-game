@@ -2,15 +2,36 @@
 
 const quizData = [
     {
-        question: "What is my dogs name?",
-        options: ["Dylan", "Duncan", "Dixie", "Delta"],
-        answer: "Dylan"
+        question: "What country has the highest life expectancy?",
+        options: ["China", "Hong Kong", "Russia", "Japan"],
+        answer: "Hong Kong",
     },
-    // {
-    //     question:
-    //     options:
-    //     answer:
-    // }
+    {
+        question: "Where would you be if you were standing on the Spanish Steps?",
+        options: ["Madrid", "Rome", "Mexico City", "Paris"       ],
+        answer: "Rome",
+    },
+    {
+        question: "How many elements are on the periodic table?",
+        options: ["118", "100", "127", "99"       ],
+        answer: "118",
+    },
+    {
+        question: "What planet has the most moons?",
+        options: ["Jupiter", "Saturn", "Neptune", "Mars"       ],
+        answer: "Saturn",
+    },
+    {
+        question: "What country drinks the most coffee per capita?",
+        options: ["USA", "Canada", "Guatemala", "Finland"       ],
+        answer: "Finland",
+    },
+    {
+        question: "Where would you be if you were standing on the Spanish Steps?",
+        options: ["Madrid", "Rome", "Mexico City", "Paris"       ],
+        answer: "Rome",
+    },
+
     // add more questions and new arrary for hard difficulty
     
 ]
@@ -43,4 +64,22 @@ function giveQuestion() {
 console.log(giveQuestion(), "give question func working")
 
 //code to select answer
-function selectAnswer()
+function selectAnswer(options) {
+    const selection = options.target;
+    const answer = quizData[currentQuestion].answer;
+
+    if (selection.innerText === answer) {
+        score++ && currentQuestion++
+    } else{
+        gameOver()
+    }
+}
+
+console.log(selectAnswer())
+function gameOver() {
+
+}
+
+function showResult() {
+
+}
