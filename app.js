@@ -58,24 +58,26 @@ function giveQuestion() {
         optionsEl.appendChild(button);
         button.addEventListener('click', selectAnswer);
     });
-    
 }
-
-console.log(giveQuestion(), "give question func working")
+giveQuestion()
+// console.log(giveQuestion(), "give question func working")
 
 //code to select answer
-function selectAnswer(options) {
-    const selection = options.target;
+function selectAnswer(event) {
+    const selection = event.target;
     const answer = quizData[currentQuestion].answer;
-
-    if (selection.innerText === answer) {
+    console.log(selection.innerText.toLowerCase(), "this is the on click")
+    
+    // compare the selection to the answer while both are lower case
+    if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
+        console.log('we made it!')
         score++ && currentQuestion++
     } else{
         gameOver()
     }
 }
 
-console.log(selectAnswer())
+
 function gameOver() {
 
 }
