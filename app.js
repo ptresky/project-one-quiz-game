@@ -150,6 +150,7 @@ function selectAnswer(event) {
     } else {
         gameMessageEl.textContent = "Wrong Answer, Click Play Again"
         gameOver = true
+        init()
         render()
         }
     }
