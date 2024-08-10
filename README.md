@@ -16,6 +16,7 @@ I have always been a fan of miscellaneous and obscure trivia. Jeopardy is always
 * Freepd for the Audio file
 * Canva for the logo design
 * Google for the quiz data sets
+* Webaim to verify accessibility
 
 ### Technologies used:
 * HTML
