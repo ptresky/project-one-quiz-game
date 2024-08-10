@@ -26,10 +26,69 @@ let quizData = [
         options: ["USA", "Canada", "Guatemala", "Finland"],
         answer: "Finland",
     },
+    {
+        question: "Who is the author of 'To Kill a Mockingbird'?",
+        options: ["F.Scott Fitzgerald", "Harper Lee", "John Steinbeck", "Ernest Hemingway"],
+        answer: "Harper Lee",
+    },
+    {
+        question: "What is the capital city of New Zealand?",
+        options: ["Auckland", "Christchurch", "Wellington", "Queenstown"],
+        Answer: "Wellington",
+      },
+
     // add more questions and new array for hard difficulty
 ]
 
+let quizDataHard = [
+    {
+        question: "In which sport are barani, rudolph, and randolph all techniques?",
+        options: ["tennis", "trampolining", "bocce", "fly fishing"],
+        answer: "trampolining",
+    },
+    {
+        question: "What color does gold leaf appear if you hold it up to the light?",
+        options: ["gold", "white", "green", "orange"],
+        answer: "green",
+    },
+    {
+        question: "What is considered the northernmost capital in the world?",
+        options: ["Helinski", "Stockholm", "Oslo", "Reykjavik"],
+        answer: "Reykjavik",
+    },
+    {
+        question: "Who invented the first mass-produced, practical sewing machine in 1846?",
+        options: ["Isaac Singer", "Elias Howe", "Walter Hunt", "Barthélemy Thimonnier"],
+        answer: "Elias Howe",
+    },
+    {
+        question: "What is the capital city of Kazakhstan?",
+        options: ["Almaty", "Bishkek", "Astana", "Tashkent"],
+        answer: "Astana",
+    },
+    {
+        question: "What is the only species of bear found in the Southern Hemisphere?",
+        options: ["Polar Bear", "Brown Bear", "Panda Bear", "Spectacled Bear"],
+        answer: "Spectacled Bear",
+    },
+    {
+        question: "What is the name of the closest star to Earth, besides the Sun?",
+        options: ["Sirius", "Alpha Centauri", "Proxima Centauri", "Betelgeuse"],
+        answer: "Proxima Centauri",
+    },
+    {
+        question: "Which two countries fought in the Falklands War?",
+        options: ["Argentina & United Kingdom", "Brazil & Chile", "Argentina & Chile", "Chile & United Kingdom"],
+        answer: "Argentina & United Kingdom",
+    },
+    {
+        question: "What city holds the title of the oldest continuously inhabited city globally?",
+        options: ["Athens", "Jerusalem", "Cairo", "Damascus"],
+        answer: "Damascus",
+    },
 
+
+]
 
 
 const gameMessageEl = document.querySelector('#gameMessage')
