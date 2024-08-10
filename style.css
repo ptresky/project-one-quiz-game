@@ -5,6 +5,9 @@ body {
     text-align: center;
     padding-bottom: 5%;
     }
+img {
+    height:10rem;
+}
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
