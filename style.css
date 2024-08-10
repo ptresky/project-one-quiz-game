@@ -53,6 +53,11 @@ button:hover {
     background-color: #fff;
 }
 
+#toggle, #reset {
+    font-size: x-small;
+}
+
+
 /* .hidden {
     display: none;
 } */

@@ -95,6 +95,7 @@ const gameMessageEl = document.querySelector('#gameMessage')
 const questionEl = document.querySelector('#question')
 const optionsEl = document.querySelector('#options')
 const resetButtonEl = document.querySelector('#reset')
+const toggleButtonEl = document.querySelector('#toggle')
 let currentQuestion = 0;
 let gameOver = false;
 
@@ -105,6 +106,7 @@ function init() {
     console.log("init working")
     currentQuestion = 0
     gameOver = false
+    gameMessageEl.innerText = ""
     render()
     giveQuestion()
 }
@@ -171,7 +173,14 @@ function selectAnswer(event) {
 
     }
 
-
+function toggleArrays(event) {
+    const toggle = event.target;
+    if (toggle) {
+        quizDataHard
+    } else {
+        quizData
+    }
+}
 
 
 function checkGameOver() {
@@ -183,3 +192,4 @@ function checkGameOver() {
 }
 
 resetButtonEl.addEventListener('click', init)
+toggleButtonEl.addEventListener('click', toggleArrays)
