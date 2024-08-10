@@ -5,6 +5,7 @@ body {
     text-align: center;
     padding-bottom: 5%;
     }
+
 img {
     height:10rem;
 }
@@ -102,12 +103,11 @@ button:hover {
     color:#219ebc
 }
 
-/* .hidden {
-    display: none;
-} */
-/* .galindo-regular {
-    font-family: "Galindo", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  } */
-  
+audio {
+    display: block;
+    margin: 15% auto;
+    padding: 15%;
+    align-content: center;
+    text-align: center;
+    
+}
