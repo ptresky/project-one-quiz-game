@@ -5,18 +5,6 @@ body {
     text-align: center;
     padding-bottom: 5%;
     }
-     
-
-
-
- #quiz {
-    max-width: 75%;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 5px;
-
-
-}
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -64,6 +52,10 @@ button:hover {
     color: #001F3F;
     background-color: #fff;
 }
+
+/* .hidden {
+    display: none;
+} */
 /* .galindo-regular {
     font-family: "Galindo", sans-serif;
     font-weight: 400;

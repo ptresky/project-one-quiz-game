@@ -1,6 +1,6 @@
 // console.log("things are working")
 
-const quizData = [
+let quizData = [
     {
         question: "What country has the highest life expectancy?",
         options: ["China", "Hong Kong", "Russia", "Japan"],
@@ -26,38 +26,32 @@ const quizData = [
         options: ["USA", "Canada", "Guatemala", "Finland"],
         answer: "Finland",
     },
-    // {
-    //     question: "Where would you be if you were standing on the Spanish Steps?",
-    //     options: ["Madrid", "Rome", "Mexico City", "Paris"],
-    //     answer: "Rome",
-    // },
-
     // add more questions and new array for hard difficulty
-    
 ]
-// console.log(quizData[0])
 
+
+
+
+const gameMessageEl = document.querySelector('#gameMessage')
 const questionEl = document.querySelector('#question')
 const optionsEl = document.querySelector('#options')
-// const submitButton = document.querySelector('#submit')
-const gameMessageEl = document.querySelector('#gameMessage')
 const resetButtonEl = document.querySelector('#reset')
-
+let currentQuestion = 0;
+let gameOver = false;
 
 //starting point for the player
 init()
 
 function init() {
     console.log("init working")
-    resetButtonEl.classList.add("hidden")
     currentQuestion = 0
-    score = 0
     gameOver = false
     render()
+    giveQuestion()
 }
 
 function render() {
-    if (gameOver) {
+    if (gameOver === true) {
         resetButtonEl.classList.remove('hidden')
         // gameMessageEl.classList.remove('hidden')
     }
@@ -65,10 +59,15 @@ function render() {
 
 //Function once game begins to display question
 function giveQuestion() {
-    const question = quizData[0];
-    if (quizData.length === 0) {
-        return gameMessageEl = "Congratulations! You won!"
-        init()}
+    if (currentQuestion >= quizData.length) {
+        return gameMessageEl.innerText = "Congratulations! You won!";
+        gameOver = true;
+        render();
+        return;
+    }
+
+    const question = quizData[currentQuestion];
+    
         
     questionEl.innerText = question.question
 
@@ -80,6 +79,7 @@ function giveQuestion() {
         button.addEventListener('click', selectAnswer);
     });
 }
+
 giveQuestion()
 // console.log(giveQuestion(), "give question func working")
 
@@ -87,29 +87,26 @@ giveQuestion()
 function selectAnswer(event) {
     const selection = event.target;
     // console.table(quizData)
-    const answer = quizData[0].answer;
+    const answer = quizData[currentQuestion].answer;
     // console.log(selection.innerText.toLowerCase(), "this is the on click" )
     console.log(answer, "this is the answer")
     // compare the selection to the answer while both are lower case
-    if (quizData.length === 0) {
-        return gameMessageEl.textContent = "Congratulations! You won!"
-        init()
-    }
+    // if (quizData.length === 0) {
+    //     return gameMessageEl.textContent = "Congratulations! You won!"
+    //     init()
+    // }
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
         console.log('right answer!')
-        score += 1  
+        // score += 1  
         gameMessageEl.textContent = "CORRECT!"
-        // remove the current question from the front of the data array
-        quizData.shift()
+        currentQuestion += 1
         giveQuestion()
+      
         console.log(gameMessageEl.textContent)
         // console.log(currentQuestion, score)
-    } else if (
-        selection.innerText.toLowerCase() !== answer.toLowerCase()) {
-            console.log("wrong answer")
-            console.log(gameMessageEl)
-            gameMessageEl.textContent = "Wrong Answer, Play Again"
-            checkGameOver()
+    } else {
+        gameMessageEl.textContent = "Wrong Answer, Play Again"
+        checkGameOver()
         }
         console.log(gameMessageEl)
 
@@ -119,9 +116,11 @@ function selectAnswer(event) {
 
 
 function checkGameOver() {
-    gameOver = true
+    gameOver === true
     questionEl.classList.remove('hidden')
     optionsEl.classList.remove('hidden')
     resetButtonEl.classList.add('hidden')
 
 }
+
+resetButtonEl.addEventListener('click', init)
