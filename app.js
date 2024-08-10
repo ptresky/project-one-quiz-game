@@ -2,11 +2,6 @@
 
 let quizData = [
     {
-        question: "What country has the highest life expectancy?",
-        options: ["China", "Hong Kong", "Russia", "Japan"],
-        answer: "Hong Kong",
-    },
-    {
         question: "Where would you be if you were standing on the Spanish Steps?",
         options: ["Madrid", "Rome", "Mexico City", "Paris"],
         answer: "Rome",
@@ -34,9 +29,14 @@ let quizData = [
     {
         question: "What is the capital city of New Zealand?",
         options: ["Auckland", "Christchurch", "Wellington", "Queenstown"],
-        Answer: "Wellington",
-      },
-
+        answer: "Wellington",
+    },
+    {
+        question: "What country has the highest life expectancy?",
+        options: ["China", "Hong Kong", "Russia", "Japan"],
+        answer: "Hong Kong",
+    },
+    
     // add more questions and new array for hard difficulty
 ]
 
@@ -98,6 +98,7 @@ const resetButtonEl = document.querySelector('#reset')
 const toggleButtonEl = document.querySelector('#toggle')
 let currentQuestion = 0;
 let gameOver = false;
+let quizDataCurrent = quizData
 
 //starting point for the player
 init()
@@ -114,25 +115,25 @@ function init() {
 function render() {
     if (gameOver === true) {
         resetButtonEl.classList.remove('hidden')
-        // gameMessageEl.classList.remove('hidden')
+    } else {
+        resetButtonEl.classList.add('hidden')
     }
 }
 
 //Function once game begins to display question
 function giveQuestion() {
-    if (currentQuestion >= quizData.length) {
-        return gameMessageEl.innerText = "Congratulations! You won!";
+    if (currentQuestion >= quizDataCurrent.length) {
+        gameMessageEl.innerText = "Congratulations! You won!";
         gameOver = true;
         render();
         return;
     }
 
-    const question = quizData[currentQuestion];
+    const question = quizDataCurrent[currentQuestion];
     
-        
     questionEl.innerText = question.question
-
     optionsEl.innerText = "";
+    
     question.options.forEach(option => {
         const button = document.createElement("button");
         button.innerText = option;
@@ -142,23 +143,20 @@ function giveQuestion() {
 }
 
 giveQuestion()
-// console.log(giveQuestion(), "give question func working")
 
 //code to select answer
 function selectAnswer(event) {
     const selection = event.target;
-    // console.table(quizData)
-    const answer = quizData[currentQuestion].answer;
+    
+    const answer = quizDataCurrent[currentQuestion].answer;
     // console.log(selection.innerText.toLowerCase(), "this is the on click" )
-    console.log(answer, "this is the answer")
     // compare the selection to the answer while both are lower case
-    // if (quizData.length === 0) {
-    //     return gameMessageEl.textContent = "Congratulations! You won!"
-    //     init()
-    // }
+    if (currentQuestion >= quizData.length) {
+        return gameMessageEl.textContent = "Congratulations! You won!";
+        
+    }
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
         console.log('right answer!')
-        // score += 1  
         gameMessageEl.textContent = "CORRECT!"
         currentQuestion += 1
         giveQuestion()
@@ -166,30 +164,25 @@ function selectAnswer(event) {
         console.log(gameMessageEl.textContent)
         // console.log(currentQuestion, score)
     } else {
-        gameMessageEl.textContent = "Wrong Answer, Play Again"
-        checkGameOver()
+        gameMessageEl.textContent = "Wrong Answer, Click Play Again"
+        
+        gameOver = true
+        render()
         }
         console.log(gameMessageEl)
 
     }
 
-function toggleArrays(event) {
-    const toggle = event.target;
-    if (toggle) {
-        quizDataHard
-    } else {
-        quizData
-    }
+// this is the function to control which Array is being accessed
+
+function toggleArrays() {
+    quizDataCurrent = (quizDataCurrent === quizData) ? quizDataHard : quizData;
+    init()
+    
 }
+// console.log(toggleArrays())
 
 
-function checkGameOver() {
-    gameOver === true
-    questionEl.classList.remove('hidden')
-    optionsEl.classList.remove('hidden')
-    resetButtonEl.classList.add('hidden')
-
-}
 
 resetButtonEl.addEventListener('click', init)
 toggleButtonEl.addEventListener('click', toggleArrays)
