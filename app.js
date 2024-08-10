@@ -1,5 +1,3 @@
-// console.log("things are working")
-
 let quizData = [
     {
         question: "Where would you be if you were standing on the Spanish Steps?",
@@ -36,8 +34,6 @@ let quizData = [
         options: ["China", "Hong Kong", "Russia", "Japan"],
         answer: "Hong Kong",
     },
-    
-    // add more questions and new array for hard difficulty
 ]
 
 let quizDataHard = [
@@ -86,10 +82,7 @@ let quizDataHard = [
         options: ["Athens", "Jerusalem", "Cairo", "Damascus"],
         answer: "Damascus",
     },
-
-
 ]
-
 
 const gameMessageEl = document.querySelector('#gameMessage')
 const questionEl = document.querySelector('#question')
@@ -100,7 +93,6 @@ let currentQuestion = 0;
 let gameOver = false;
 let quizDataCurrent = quizData
 
-//starting point for the player
 init()
 
 function init() {
@@ -120,7 +112,6 @@ function render() {
     }
 }
 
-//Function once game begins to display question
 function giveQuestion() {
     if (currentQuestion >= quizDataCurrent.length) {
         gameMessageEl.innerText = "Congratulations! You won!";
@@ -144,13 +135,10 @@ function giveQuestion() {
 
 giveQuestion()
 
-//code to select answer
 function selectAnswer(event) {
     const selection = event.target;
     
     const answer = quizDataCurrent[currentQuestion].answer;
-    // console.log(selection.innerText.toLowerCase(), "this is the on click" )
-    // compare the selection to the answer while both are lower case
     if (currentQuestion >= quizData.length) {
         return gameMessageEl.textContent = "Congratulations! You won!";
         
@@ -160,35 +148,21 @@ function selectAnswer(event) {
         gameMessageEl.textContent = "CORRECT!"
         currentQuestion += 1
         giveQuestion()
-      
-        console.log(gameMessageEl.textContent)
-        // console.log(currentQuestion, score)
+
     } else {
         gameMessageEl.textContent = "Wrong Answer, Click Play Again"
-        
         gameOver = true
         render()
         }
-        console.log(gameMessageEl)
-
     }
-
-// this is the function to control which Array is being accessed
-
+    
 function toggleArrays() {
     quizDataCurrent = (quizDataCurrent === quizData) ? quizDataHard : quizData;
     init()
-    
 }
-// console.log(toggleArrays())
-
-
 
 resetButtonEl.addEventListener('click', init)
 toggleButtonEl.addEventListener('click', toggleArrays)
-
-
-// this is the code for presenting directions on how to play game
 
 const openBtn = document.querySelector("#openDirections");
 const closeBtn = document.querySelector("#closeDirections");
