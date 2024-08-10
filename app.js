@@ -193,3 +193,18 @@ function checkGameOver() {
 
 resetButtonEl.addEventListener('click', init)
 toggleButtonEl.addEventListener('click', toggleArrays)
+
+
+// this is the code for presenting directions on how to play game
+
+const openBtn = document.querySelector("#openDirections");
+const closeBtn = document.querySelector("#closeDirections");
+const directions = document.querySelector("#directions");
+
+openBtn.addEventListener('click', () => {
+    directions.classList.add('open');
+});
+
+closeBtn.addEventListener('click', () => {
+    directions.classList.remove('open');
+});
