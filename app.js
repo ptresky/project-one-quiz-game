@@ -96,7 +96,6 @@ let quizDataCurrent = quizData
 init()
 
 function init() {
-    console.log("init working")
     currentQuestion = 0
     gameOver = false
     gameMessageEl.innerText = ""
@@ -144,7 +143,6 @@ function selectAnswer(event) {
         
     }
     if (selection.innerText.toLowerCase() === answer.toLowerCase()) {
-        console.log('right answer!')
         gameMessageEl.textContent = "CORRECT!"
         currentQuestion += 1
         giveQuestion()
