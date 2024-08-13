@@ -97,8 +97,12 @@ init()
 
 function init() {
     currentQuestion = 0
+    if (gameOver) {
+        gameMessageEl.innerText = "Wrong Answer, Click Play Again"
+    } else {
+        gameMessageEl.innerText = ""
+    }
     gameOver = false
-    gameMessageEl.innerText = ""
     render()
     giveQuestion()
 }
