@@ -11,7 +11,7 @@ I have always been a fan of miscellaneous and obscure trivia. Jeopardy is always
 ### Getting Started: 
 Live Website: [Quiz Time](https://ptresky.github.io/project-one-quiz-game/)
 
-> Answer each trivia question presented. If your answer is correct, you move on to the next question. If your answer is incorrect, you lose! But you can always try again. Answer all questions correctly and you win!
+> Answer each trivia question presented. If your answer is correct, you move on to the next question. If your answer is incorrect, you lose and return to the beginning! But you can always try again or change your difficulty. Answer all questions correctly and you win!
 
 ### Attributions:
 * Coolors for the Color Pallette
